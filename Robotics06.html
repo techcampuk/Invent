@@ -194,7 +194,7 @@
   </div>
   <div class="box">
     <div class="heading">Testing</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">Create a new program and drag in the 'Gamepad buttons' block.  This block returns the buttons that are pressed on the remote.</p>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Get the 'Gamepad buttons' block.  This block returns the buttons that are pressed on the remote.</p>
 </div>
 </div>
     <div style="position:relative;">
@@ -264,7 +264,8 @@
   </div>
   <div class="box">
     <div class="heading">The basic programme</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">Our basic code is fairly simple.  We just need an infinite loop that sends the gamepad buttons to the robot.  We'll do that about 20 times a second, so you'll need a 'delay 50 milliseconds' block.  (50 milliseconds is 50 thousands of a second which is the same as 1/20th of a second).</p>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Now add some more blocks as shown.</p>
+<p class="instructspara">Our basic code is fairly simple.  We just need an infinite loop that sends the gamepad buttons to the robot.  We'll do that about 20 times a second, so you'll need a 'delay 50 milliseconds' block.  (50 milliseconds is 50 thousands of a second which is the same as 1/20th of a second).</p>
 </div>
 </div>
     <div style="position:relative;">
@@ -284,9 +285,9 @@
     
     </div>
   </div>
-  <div class="subtitle">The robot program</div>
   <div class="box">
-    <div class="text"><div class="instructsdiv"><p class="instructspara">Here's the basic program that you need to create and how it works:</p>
+    <div class="heading">The robot program</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Here's the basic program that you need to create for the receiver side (the robot) and how it works:</p>
 <ul class="instructslist">
 <li>We continually try to receive a message into the 'packet' variable</li>
 <li>If we have received a message, we check that it's length is 4 characters long (as our transmitter always sends 4 characters containing the buttons pressed)</li>

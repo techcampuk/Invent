@@ -246,16 +246,6 @@
 </div>
   </div>
   <div class="box">
-    <div class="heading">Playing a note</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">Let's now write some code to play sounds.  Try the following code out.</p>
-<p class="instructspara">Type it into 'Notepad' and then save it with some sensible name (perhaps 'sound.py') and then upload it to your robot and run the code.  It should play a sound for 1 second.</p>
-<p class="instructspara">Let's have a look at how it works.  You know how already about the time library and the sleep() command, although this time we've imported the library differently ...</p>
-</div>
-</div>
-    <div class="unselectable">
-    <pre><code>from&nbsp;machine&nbsp;import&nbsp;*<br>from&nbsp;time&nbsp;import&nbsp;*<br><br>pwmout&nbsp;=&nbsp;PWM(Pin(25))<br>pwmout.duty_u16(512)<br>pwmout.freq(1200)<br>sleep(1)<br>pwmout.deinit()<br></code></pre></div>
-  </div>
-  <div class="box">
     <div class="heading">Different ways of importing</div>
     <div class="text"><div class="instructsdiv"><p class="instructspara">Do you recall that last time we used:</p>
 <p class="instructspara"re><code>import time
@@ -273,67 +263,66 @@
 </div>
   </div>
   <div class="box">
-    <div class="heading">The PWM code</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">Now let's look at the rest of the code.</p>
-<p class="instructspara">We've imported everything from the machine library as well.  There are two functions we need to use from this.  One is the Pin() function which creates a 'Pin' object for the hardware we want to control.  In our case a speaker is connected to Pin 25 of the microcontroller, so you'll see 'Pin(25)' passed to the 'PWM' function.</p>
-<p class="instructspara">This 'PWM' function stands for 'Pulse Width Modulation' and is just a technical term for turning a pin on and off repeatedly and being able to adjust how long it is on for and how long it is off for.</p>
+    <div class="heading">Playing a note</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Using the playtone function is a good way to create you own beep sounds from the code, give it a try!</p>
+<p class="instructspara">The first parameter is the frequency of the note in Hertz, in this case it is 50Hz.</p>
+<p class="instructspara">The second parameter is the number of seconds you want the note played for, in this case it is 2 seconds.</p>
 </div>
 </div>
     <div class="unselectable">
-    <pre><code>from&nbsp;machine&nbsp;import&nbsp;*<br>from&nbsp;time&nbsp;import&nbsp;*<br><br>pwmout&nbsp;=&nbsp;PWM(Pin(25))<br>pwmout.duty_u16(512)<br>pwmout.freq(1200)<br>sleep(1)<br>pwmout.deinit()<br></code></pre></div>
+    <pre><code>from&nbsp;invent&nbsp;import&nbsp;*<br><br>playtone(50,&nbsp;2)<br></code></pre></div>
   </div>
   <div class="box">
-    <div class="heading">Instantiating the object</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">So the line</p>
-<p class="instructspara"re><code>pwmout = PWM(Pin(25))
-</code></pre>
-<p class="instructspara">Creates a PWM object connected to our speaker pin (pin 25) and saves it to the 'pwmout' variable - but this could be any name we choose.  An object is like a variable but can have functions that we can call to do things (which are called 'methods').</p>
-<p class="instructspara">The next command:</p>
-<p class="instructspara"re><code>pwmout.duty_u16(512)
-</code></pre>
-<p class="instructspara">Is an example of a method.  This sets the duty cycle' or how long the speaker is on versus how long it's off.  Please don't change this number (512) as it is the maximum that the speaker can safely handle.</p>
+    <div class="heading">Beeps</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Try getting your robot to beep 3 times using the playtone function from the previous step.</p>
+<p class="instructspara">Don't forget to add a delay between beeps! Use the sleep function you learned earlier to wait for half a second before playing the next beep. You will also need to import the time library.</p>
 </div>
 </div>
-    <div class="unselectable">
-    <pre><code>from&nbsp;machine&nbsp;import&nbsp;*<br>from&nbsp;time&nbsp;import&nbsp;*<br><br>pwmout&nbsp;=&nbsp;PWM(Pin(25))<br>pwmout.duty_u16(512)<br>pwmout.freq(1200)<br>sleep(1)<br>pwmout.deinit()<br></code></pre></div>
   </div>
   <div class="box">
-    <div class="heading">The freq() method</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">The next command:</p>
-<p class="instructspara"re><code>pwmout.freq(1200)
-</code></pre>
-<p class="instructspara">Is another example of a method.  This toggles this pin on and off (which will make the speaker beep) until we finally tell it to stop (after the sleep function) using:</p>
-<p class="instructspara"re><code>pwmout.deinit()
-</code></pre>
-<p class="instructspara">This might all look a bit complex, but basically a combination of calls to the freq() method, and the sleep() function, followed by the deinit() method to stop making the last sound can allow us to play anything we want ...</p>
+    <div class="heading">Beep Code</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Your code should look something like this.</p>
+<p class="instructspara">In this example I chose a frequency of 40, and a beep that lasted for 2 seconds.</p>
+<p class="instructspara">Next lets take a look at varying the frequency.</p>
 </div>
 </div>
     <div class="unselectable">
-    <pre><code>from&nbsp;machine&nbsp;import&nbsp;*<br>from&nbsp;time&nbsp;import&nbsp;*<br><br>pwmout&nbsp;=&nbsp;PWM(Pin(25))<br>pwmout.duty_u16(512)<br>pwmout.freq(1200)<br>sleep(1)<br>pwmout.deinit()<br></code></pre></div>
+    <pre><code>from&nbsp;invent&nbsp;import&nbsp;*<br>import&nbsp;time<br><br>playtone(40,2)<br>time.sleep(0.5)<br>playtone(40,2)<br>time.sleep(0.5)<br>playtone(40,2)<br></code></pre></div>
   </div>
   <div class="box">
-    <div class="heading">Playing a few sounds</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">Now let's put it together.  This code should play three tones, increasing in pitch, each for 0.5 seconds, before turning the speaker off.</p>
-<p class="instructspara">Try this one out.</p>
+    <div class="heading">Frequencies</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">The average human can hear between 20Hz and 20,000Hz!</p>
+<p class="instructspara">Test your own hearing by changing the frequency in the playtone function. Remember that the first parameter represents the frequency.</p>
 </div>
 </div>
-    <div class="unselectable">
-    <pre><code>from&nbsp;machine&nbsp;import&nbsp;*<br>from&nbsp;time&nbsp;import&nbsp;*<br><br>pwmout&nbsp;=&nbsp;PWM(Pin(25))<br>pwmout.duty_u16(512)<br>pwmout.freq(600)<br>sleep(0.5)<br>pwmout.freq(1200)<br>sleep(0.5)<br>pwmout.freq(2400)<br>sleep(0.5)<br>pwmout.deinit()<br></code></pre></div>
   </div>
   <div class="box">
-    <div class="heading">Silences</div>
-    <div class="text"><div class="instructsdiv"><p class="instructspara">So what if we wanted to have a pause in the sound?  The command:</p>
-<p class="instructspara"re><code>pwmout.duty_u16(0)
-</code></pre>
-<p class="instructspara">Will stop the speaker as it sets it's 'duty cycle' to zero.  But after the sleep(1) command, to turn the speaker on again, we need to remember to use:</p>
-<p class="instructspara"re><code>pwmout.duty_u16(512)
-</code></pre>
-<p class="instructspara">This will turn it on but it will be playing with the same pitch as before.  If we wanted to change the pitch when the speaker turns on again, we'd have to use another 'pwmout.freq()' command.</p>
-<p class="instructspara">Now you know all you need to play any pitch sound and to have pauses in your sounds as well.  You're ready for the next challenge!</p>
+    <div class="heading">Beeps extended</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Can you improve the beep code to reduce the number of lines of code needed?</p>
+<p class="instructspara"><strong>Hint: Use a for loop that will run the code 3 times. Call the playtone function and use the sleep command to create a delay before the next iteration of the loop.</strong></p>
 </div>
 </div>
     <div class="unselectable">
-    <pre><code>from&nbsp;machine&nbsp;import&nbsp;*<br>from&nbsp;time&nbsp;import&nbsp;*<br><br>pwmout&nbsp;=&nbsp;PWM(Pin(25))<br>pwmout.duty_u16(512)<br>pwmout.freq(1100)<br>sleep(1)<br>pwmout.duty_u16(0)<br>sleep(1)<br>pwmout.duty_u16(512)<br>sleep(1)<br>pwmout.deinit()<br></code></pre></div>
+    <pre><code><br></code></pre></div>
+  </div>
+  <div class="box">
+    <div class="heading">Beeps extended code</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Here is the loop that will play a 50Hz beep 3 times using a loop.</p>
+<p class="instructspara">Can you change this code to increase the pitch of each beep as the code is running?</p>
+<p class="instructspara"><strong>Hint: If you create a new variable for the frequency, you will be able to add to it every time the loop happens.</strong></p>
+</div>
+</div>
+    <div class="unselectable">
+    <pre><code>from&nbsp;invent&nbsp;import&nbsp;*<br>import&nbsp;time<br><br>for&nbsp;i&nbsp;in&nbsp;range(3):<br>&nbsp;&nbsp;playtone(50,2)<br>&nbsp;&nbsp;time.sleep(0.5)<br></code></pre></div>
+  </div>
+  <div class="box">
+    <div class="heading">Beeps variable loop</div>
+    <div class="text"><div class="instructsdiv"><p class="instructspara">Here is the final beep code!</p>
+<p class="instructspara">The frequency variable is created outside the loop. At the bottom of the loop it is then increased so the next beep is played at a higher pitch.</p>
+</div>
+</div>
+    <div class="unselectable">
+    <pre><code>from&nbsp;invent&nbsp;import&nbsp;*<br>import&nbsp;time<br><br>frequency&nbsp;=&nbsp;30<br>for&nbsp;i&nbsp;in&nbsp;range(3):<br>&nbsp;&nbsp;playtone(frequency,2)<br>&nbsp;&nbsp;time.sleep(0.5)<br>&nbsp;&nbsp;frequency&nbsp;+=&nbsp;10<br></code></pre></div>
   </div>
   <div class="box">
     <div class="heading">SOS buzzer</div>
